@@ -37,6 +37,13 @@ void updateArr(const int *numbersArr) {
     printf("\n");
 }
 
+void checkArr(const int *numbersArr) {
+    if (strlen(numbersArr) == 0) {
+        printf("Nie wprowadzono danych!\n");
+        updateArr(numbersArr);
+    }
+}
+
 void main() {
     char choice;
     int numbersArr[LEN];
@@ -49,24 +56,16 @@ void main() {
                 main();
                 break;
             case '2':
-                if (strlen(numbersArr) == 0) {
-                    printf("Nie wprowadzono danych!\n");
-                    updateArr(numbersArr);
-                }
+                checkArr(numbersArr);
                 printf("Opcja 2, tbc...\n");
                 break;
             case '3':
-                if (strlen(numbersArr) == 0) {
-                    printf("Nie wprowadzono danych!\n");
-                    updateArr(numbersArr);
-                }
+                checkArr(numbersArr);
+
                 printf("Opcja 3, tbc...\n");
                 break;
             case '4':
-                if (strlen(numbersArr) == 0) {
-                    printf("Nie wprowadzono danych!\n");
-                    updateArr(numbersArr);
-                }
+                checkArr(numbersArr);
                 printf("Opcja 4, tbc...\n");
                 break;
         }
