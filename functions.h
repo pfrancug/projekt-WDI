@@ -20,6 +20,15 @@ void clearBuffer() {
     while ((c = getchar()) != '\n' && c != EOF) {}
 }
 
+// Wyświetlenie ciągu liczb
+void printArr(const int *numbersArr, char *text) {
+    printf("%s ciąg:", text);
+    for (int i = 0; i < LEN; i++) {
+        printf(" %i", numbersArr[i]);
+    }
+    printf("\n");
+}
+
 // Wprowadzenie ciągu znaków
 void updateArr(const int *numbersArr, int start) {
     clearBuffer();
@@ -31,23 +40,21 @@ void updateArr(const int *numbersArr, int start) {
             break;
         }
     }
+    system("clear");
+    printArr(numbersArr, "Wprowadzony");
+    printf("\nNaciśnij Enter, aby kontynuować...");
+    clearBuffer();
+    getchar();
 }
 
 // Sprawdzenie czy uzupełniono ciąg liczbowy
 void checkArr(const int *numbersArr) {
     if (strlen(numbersArr) == 0) {
+        system("clear");
         printf("Nie wprowadzono danych!\n");
         updateArr(numbersArr, 0);
     }
-}
-
-// Wyświetlenie ciągu liczb
-void printArr(const int *numbersArr) {
-    printf("\nPodany ciąg:");
-    for (int i = 0; i < LEN; i++) {
-        printf(" %i", numbersArr[i]);
-    }
-    printf("\n");
+    system("clear");
 }
 
 #endif //PROJEKT_WDI_FUNCTIONS_H
