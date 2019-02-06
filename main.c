@@ -12,24 +12,32 @@ void main() {
         if (choice == 1) {
             system("clear");
             updateArr(numbersArr, 0);
-            printArr(numbersArr);
-            printf("\n");
         } else if (choice == 2) {
-            system("clear");
             checkArr(numbersArr);
-            printArr(numbersArr);
-            printf("Opcja 2, tbc...\n");
-            break;
+            printArr(numbersArr, "Podany");
         } else if (choice == 3) {
-            system("clear");
             checkArr(numbersArr);
-            printArr(numbersArr);
-            printf("Opcja 3, tbc...\n");
+            printArr(numbersArr, "Podany");
         } else if (choice == 4) {
-            system("clear");
+            int newArr[LEN];
             checkArr(numbersArr);
-            printArr(numbersArr);
-            printf("Opcja 4, tbc...\n");
+            printArr(numbersArr, "Podany");
+            for (int i = 0; i < LEN; i++) {
+                newArr[i] = numbersArr[i];
+            }
+            for (int i = 0; i < LEN; i++) {
+                for (int j = 0; j < LEN - 1; j++) {
+                    if (newArr[j] > newArr[j + 1]) {
+                        int t = newArr[j];
+                        newArr[j] = newArr[j + 1];
+                        newArr[j + 1] = t;
+                    }
+                }
+            }
+            printArr(newArr, "Posortowany");
+            printf("\nNaciśnij enter, aby powrócić do menu głównego...");
+            clearBuffer();
+            getchar();
         } else {
             system("clear");
             clearBuffer();
