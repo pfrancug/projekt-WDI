@@ -7,7 +7,7 @@
 
 // Wyświetlenie menu wyboru
 void menu() {
-    //    system("clear");
+//    system("clear");
     printf("\n\tMenu główne\n\n");
     printf("1. Wprowadzenie ciągu 10 liczb całkowitych\n");
     printf("2. Znalezienie w ciągu liczby najczęściej występującej\n");
@@ -23,51 +23,58 @@ void clearBuffer() {
 }
 
 // Wprowadzenie ciągu znaków
-void updateArr(const int *numbersArr) {
+void updateArr(const int *numbersArr, int start) {
     clearBuffer();
     printf("Wprowadzanie ciągu 10 liczb:\n");
-    for (int i = 0; i < LEN; i++) {
+    for (int i = start; i < LEN; i++) {
         printf("Wprowadź %i. liczbę:\n", i + 1);
-        while (scanf("%i", &numbersArr[i]) == 0);
+        if (scanf(" %i", &numbersArr[i]) != 1) {
+            printf("Wprowadzono niepoprawne dane\n");
+            updateArr(numbersArr, i);
+            break;
+        }
     }
-    printf("Wprowdzony ciąg to:");
-    for (int i = 0; i < LEN; i++) {
-        printf(" %i", numbersArr[i]);
-    }
-    printf("\n");
 }
 
 void checkArr(const int *numbersArr) {
     if (strlen(numbersArr) == 0) {
         printf("Nie wprowadzono danych!\n");
-        updateArr(numbersArr);
+        updateArr(numbersArr, 0);
+    }
+}
+
+void printArr(const int *numbersArr) {
+    printf("Wprowdzony ciąg to:");
+    for (int i = 0; i < LEN; i++) {
+        printf(" %i", numbersArr[i]);
     }
 }
 
 void main() {
-    char choice;
+    int choice;
     int numbersArr[LEN];
     do {
         menu();
-        scanf(" %c", &choice);
-        switch (choice) {
-            case '1':
-                updateArr(numbersArr);
-                main();
-                break;
-            case '2':
-                checkArr(numbersArr);
-                printf("Opcja 2, tbc...\n");
-                break;
-            case '3':
-                checkArr(numbersArr);
-
-                printf("Opcja 3, tbc...\n");
-                break;
-            case '4':
-                checkArr(numbersArr);
-                printf("Opcja 4, tbc...\n");
-                break;
+        scanf(" %i", &choice);
+        if (choice == 1) {
+            updateArr(numbersArr, 0);
+            printArr(numbersArr);
+            printf("\n");
+            main();
+        } else if (choice == 2) {
+            checkArr(numbersArr);
+            printArr(numbersArr);
+            printf("Opcja 2, tbc...\n");
+        } else if (choice == 3) {
+            checkArr(numbersArr);
+            printArr(numbersArr);
+            printf("Opcja 3, tbc...\n");
+        } else if (choice == 4) {
+            checkArr(numbersArr);
+            printArr(numbersArr);
+            printf("Opcja 4, tbc...\n");
+        } else {
+            clearBuffer();
         }
-    } while (choice != '5');
+    } while (choice != 5);
 }
