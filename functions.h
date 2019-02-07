@@ -34,7 +34,6 @@ void updateArr(const int *numbersArr, int start) {
     for (int i = start; i < LEN; i++) {
         printf("Wprowadź %i. liczbę:\n", i + 1);
         if (scanf(" %i", &numbersArr[i]) != 1) {
-            clearBuffer();
             printf("Wprowadzono niepoprawne dane!\n");
             updateArr(numbersArr, i);
             break;

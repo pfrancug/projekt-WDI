@@ -6,10 +6,11 @@
 void main() {
     int choice;
     int numbersArr[LEN];
-    do {
+    for (;;) {
         system("clear");
         menu();
-        switch (scanf(" %i", &choice)) {
+        scanf(" %i", &choice);
+        switch (choice) {
             case 1:
                 system("clear");
                 updateArr(numbersArr, 0);
@@ -35,5 +36,5 @@ void main() {
             default:
                 clearBuffer();
         }
-    } while (choice != 5);
+    }
 }
