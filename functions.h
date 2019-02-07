@@ -20,6 +20,13 @@ void clearBuffer() {
     while ((c = getchar()) != '\n' && c != EOF) {}
 }
 
+// Czekaj na Enter
+void waitEnter() {
+    printf("\nNaciśnij enter, aby powrócić do menu głównego...");
+    clearBuffer();
+    getchar();
+}
+
 // Wyświetlenie ciągu liczb
 void printArr(const int *numbersArr, char *text) {
     printf("%s ciąg:", text);
