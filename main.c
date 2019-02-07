@@ -1,13 +1,13 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "functions.h"
 
-void cont();
-
 void main() {
     int choice;
     int numbersArr[LEN];
+    bool insertedArr = false;
     for (;;) {
         system("clear");
         menu();
@@ -15,26 +15,21 @@ void main() {
         switch (choice) {
             case 1:
                 system("clear");
-                updateArr(numbersArr, 0);
+                updateArr(numbersArr, &insertedArr, 0);
                 break;
             case 2:
-                checkArr(numbersArr);
+                checkArr(numbersArr, &insertedArr);
                 printArr(numbersArr, "Podany");
-
-
-
                 waitEnter();
                 break;
             case 3:
-                checkArr(numbersArr);
+                checkArr(numbersArr, &insertedArr);
                 printArr(numbersArr, "Podany");
-
-
-
+                arithMean(numbersArr);
                 waitEnter();
                 break;
             case 4:
-                checkArr(numbersArr);
+                checkArr(numbersArr, &insertedArr);
                 printArr(numbersArr, "Podany");
                 sortArr(numbersArr);
                 waitEnter();
