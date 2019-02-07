@@ -31,10 +31,10 @@ void printArr(const int *numbersArr, char *text) {
 
 // Wprowadzenie ciągu znaków
 void updateArr(const int *numbersArr, int start) {
-    clearBuffer();
     for (int i = start; i < LEN; i++) {
         printf("Wprowadź %i. liczbę:\n", i + 1);
         if (scanf(" %i", &numbersArr[i]) != 1) {
+            clearBuffer();
             printf("Wprowadzono niepoprawne dane!\n");
             updateArr(numbersArr, i);
             break;
@@ -55,6 +55,24 @@ void checkArr(const int *numbersArr) {
         updateArr(numbersArr, 0);
     }
     system("clear");
+}
+
+// Sortowanie liczb ciągu w porządku rosnącym
+void sortArr(const int *numbersArr) {
+    int sortedArr[LEN];
+    for (int i = 0; i < LEN; i++) {
+        sortedArr[i] = numbersArr[i];
+    }
+    for (int i = 0; i < LEN; i++) {
+        for (int j = 0; j < LEN - 1; j++) {
+            if (sortedArr[j] > sortedArr[j + 1]) {
+                int t = sortedArr[j];
+                sortedArr[j] = sortedArr[j + 1];
+                sortedArr[j + 1] = t;
+            }
+        }
+    }
+    printArr(sortedArr, "Posortowany");
 }
 
 #endif //PROJEKT_WDI_FUNCTIONS_H
