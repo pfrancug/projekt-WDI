@@ -37,7 +37,7 @@ void printArr(const int *numbersArr, char *text) {
 }
 
 /// Wprowadzenie ciągu znaków
-void updateArr(const int *numbersArr, bool *insertedArr, int start) {
+void updateArr(int *numbersArr, bool *insertedArr, int start) {
     for (int i = start; i < LEN; i++) {
         printf("Wprowadź %i. liczbę:\n", i + 1);
         if (scanf(" %i", &numbersArr[i]) != 1) {
@@ -55,7 +55,7 @@ void updateArr(const int *numbersArr, bool *insertedArr, int start) {
 }
 
 /// Sprawdzenie czy uzupełniono ciąg liczbowy
-void checkArr(const int *numbersArr, bool *insertedArr) {
+void checkArr(int *numbersArr, bool *insertedArr) {
     if (*insertedArr == 0) {
 //        if (strlen(numbersArr) == 0) {
         system("clear");
@@ -82,8 +82,47 @@ void arithMean(const int *numbersArr) {
     }
 }
 
+/// Znalezienie w ciągu liczby najczęściej występującej
+void mostCommon(const int *sortedArr) {
+    int countCommon[LEN][2] = {0};
+    for (int i = 0; i < LEN; i++) {
+        for (int j = 0; j < LEN; j++) {
+            if (sortedArr[i] == countCommon[j][0]) {
+                countCommon[j][1]++;
+                break;
+            } else if (countCommon[j][1] == 0) {
+                countCommon[j][0] = sortedArr[i];
+                countCommon[j][1]++;
+                break;
+            }
+        }
+    }
+    for (int i = 0; i < LEN; i++) {
+        for (int j = 0; j < LEN - 1; j++) {
+            if (countCommon[j][1] < countCommon[j + 1][1]) {
+                int x = countCommon[j][0];
+                int y = countCommon[j][1];
+                countCommon[j][0] = countCommon[j + 1][0];
+                countCommon[j][1] = countCommon[j + 1][1];
+                countCommon[j + 1][0] = x;
+                countCommon[j + 1][1] = y;
+            }
+        }
+    }
+    printf("Najczęściej występujące liczby:");
+    for (int i = 0; i < LEN; i++) {
+        int max = countCommon[0][1];
+        if (countCommon[i][1] == max) {
+            printf(" %i;", countCommon[i][0]);
+        } else {
+            break;
+        }
+    }
+    printf("\n");
+}
+
 /// Sortowanie liczb ciągu w porządku rosnącym
-void sortArr(const int *numbersArr) {
+void sortArr(const int *numbersArr, bool mostCommonF) {
     int sortedArr[LEN];
     for (int i = 0; i < LEN; i++) {
         sortedArr[i] = numbersArr[i];
@@ -97,7 +136,11 @@ void sortArr(const int *numbersArr) {
             }
         }
     }
-    printArr(sortedArr, "Posortowany");
+    if (mostCommonF) {
+        mostCommon(sortedArr);
+    } else {
+        printArr(sortedArr, "Posortowany");
+    }
 }
 
 #endif //PROJEKT_WDI_FUNCTIONS_H

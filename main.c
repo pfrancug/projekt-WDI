@@ -7,7 +7,7 @@
 void main() {
     int choice;
     int numbersArr[LEN];
-    bool insertedArr = false;
+    bool insertedArr;
     for (;;) {
         system("clear");
         menu();
@@ -20,6 +20,7 @@ void main() {
             case 2:
                 checkArr(numbersArr, &insertedArr);
                 printArr(numbersArr, "Podany");
+                sortArr(numbersArr, true);
                 waitEnter();
                 break;
             case 3:
@@ -31,7 +32,7 @@ void main() {
             case 4:
                 checkArr(numbersArr, &insertedArr);
                 printArr(numbersArr, "Podany");
-                sortArr(numbersArr);
+                sortArr(numbersArr, false);
                 waitEnter();
                 break;
             case 5:
