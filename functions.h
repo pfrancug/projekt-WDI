@@ -76,9 +76,9 @@ void arithMean(const int *numbersArr) {
         }
     }
     if (count) {
-        printf("Średnia wartość dla liczb przystych: %.2lf", sum / count);
+        printf("Średnia wartość dla liczb przystych: %.2lf\n", sum / count);
     } else {
-        printf("Brak liczb parzystych");
+        printf("Brak liczb parzystych\n");
     }
 }
 
@@ -113,7 +113,7 @@ void mostCommon(const int *sortedArr) {
     for (int i = 0; i < LEN; i++) {
         int max = countCommon[0][1];
         if (countCommon[i][1] == max) {
-            printf(" %i;", countCommon[i][0]);
+            printf(" %i", countCommon[i][0]);
         } else {
             break;
         }
