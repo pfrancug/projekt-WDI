@@ -4,7 +4,7 @@
 #include <string.h>
 #include "functions.h"
 
-void main() {
+int main() {
     int choice;
     int numbersArr[LEN];
     bool insertedArr;
@@ -41,4 +41,5 @@ void main() {
                 clearBuffer();
         }
     }
+    return 0;
 }

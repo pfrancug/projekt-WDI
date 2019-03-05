@@ -42,6 +42,7 @@ void updateArr(int *numbersArr, bool *insertedArr, int start) {
         printf("Wprowadź %i. liczbę:\n", i + 1);
         if (scanf(" %i", &numbersArr[i]) != 1) {
             printf("Wprowadzono niepoprawne dane!\n");
+                clearBuffer();
             updateArr(numbersArr, insertedArr, i);
             break;
         }
@@ -56,8 +57,7 @@ void updateArr(int *numbersArr, bool *insertedArr, int start) {
 
 /// Sprawdzenie czy uzupełniono ciąg liczbowy
 void checkArr(int *numbersArr, bool *insertedArr) {
-    if (*insertedArr == 0) {
-//        if (strlen(numbersArr) == 0) {
+    if (!*insertedArr) {
         system("clear");
         printf("Nie wprowadzono danych!\n");
         updateArr(numbersArr, insertedArr, 0);
@@ -70,7 +70,7 @@ void arithMean(const int *numbersArr) {
     double sum = 0;
     int count = 0;
     for (int i = 0; i < LEN; i++) {
-        if (numbersArr[i] % 2 == 0) {
+        if (!(numbersArr[i] % 2)) {
             sum += numbersArr[i];
             count++;
         }
