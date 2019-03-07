@@ -6,7 +6,10 @@
 
 /// Wyświetlenie menu wyboru
 void menu() {
-    printf("\n\tMenu główne\n\n");
+    printf("\n\t\t\tProgram operujący na ciągu 10 liczb calkowitych\n");
+    printf("\n\t\tCoded by: Agnieszka Witkowska, Krzysztof Małecki & Piotr Francug\n");
+    printf("\n\t\t----------------------------------------------------------------\n");
+    printf("\nMenu główne\n\n");
     printf("1. Wprowadzenie ciągu 10 liczb całkowitych\n");
     printf("2. Znalezienie w ciągu liczby najczęściej występującej\n");
     printf("3. Wyznaczenie wartości średniej wprowadzonych liczb parzystych\n");
@@ -42,7 +45,7 @@ void updateArr(int *numbersArr, bool *insertedArr, int start) {
         printf("Wprowadź %i. liczbę:\n", i + 1);
         if (scanf(" %i", &numbersArr[i]) != 1) {
             printf("Wprowadzono niepoprawne dane!\n");
-                clearBuffer();
+            clearBuffer();
             updateArr(numbersArr, insertedArr, i);
             break;
         }
@@ -109,13 +112,17 @@ void mostCommon(const int *sortedArr) {
             }
         }
     }
-    printf("Najczęściej występujące liczby:");
-    for (int i = 0; i < LEN; i++) {
-        int max = countCommon[0][1];
-        if (countCommon[i][1] == max) {
-            printf(" %i", countCommon[i][0]);
-        } else {
-            break;
+    if (countCommon[0][1] == 1){
+        printf("Brak powtarzających się elementów");
+    } else {
+        printf("Najczęściej występujące liczby:");
+        for (int i = 0; i < LEN; i++) {
+            int max = countCommon[0][1];
+            if (countCommon[i][1] == max) {
+                printf(" %i", countCommon[i][0]);
+            } else {
+                break;
+            }
         }
     }
     printf("\n");
